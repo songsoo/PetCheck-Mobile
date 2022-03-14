@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context=".login">
+
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:textSize="25dp"
+        android:textColor="@color/colorAccent"
+        android:src="@drawable/logo_main_dc_black"
+        android:text="로그인" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_gravity="center_horizontal"
+
+        >
+        <TextView
+        android:layout_width="310dp"
+        android:layout_height="20dp"
+        android:text="Email"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:textSize="13dp"
+        android:textColor="#4B4C4C"
+        android:layout_marginLeft="23dp"
+            android:layout_marginTop="30dp"
+            ></TextView>
+
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/box_dc"
+            android:backgroundTint="#A5A5A5"
+         />
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="63dp"
+            android:inputType="textEmailAddress"
+            android:textColor="#6f6f6f"
+            android:textColorHint="#A5A5A5"
+            android:textSize="12dp" />
+        <TextView
+            android:layout_width="310dp"
+            android:layout_height="20dp"
+            android:text="Password"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13dp"
+            android:textColor="#4B4C4C"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="120dp"
+            ></TextView>
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:layout_marginTop="140dp"
+            android:inputType="textPassword"
+            android:src="@drawable/box_dc"
+
+            android:layout_gravity="center_horizontal"
+
+            />
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="153dp"
+            android:inputType="textPassword"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#6f6f6f"
+
+            android:textSize="12dp"
+            android:textColorHint="#A5A5A5"
+
+            />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="230dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#00ff0000"
+            />
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/login_btn_dc"
+            android:layout_marginTop="260dp"
+            android:layout_gravity="center_horizontal"
+            ></ImageView>
+
+
+        <Button
+
+            android:id="@+id/btnSignin"
+            android:background="#00ff0000"
+            android:layout_width="550dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="30dp"
+            android:layout_marginTop="435dp"/>
+
+
+        <Button
+
+            android:id="@+id/btnFindpassword"
+            android:background="#00ff0000"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="460dp"
+            android:textColor="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"
+
+        android:inputType="textPassword"
+        android:src="@drawable/signup_dc"
+
+        android:layout_gravity="center_horizontal"
+
+        />
+    <!--
+    <CheckBox
+        android:id="@+id/id_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="72dp"
+        android:text="로그인 정보 기억하기" />
+    -->
+
+
+
+
+
+    <!--로그인 실패했을때 메세지창 띄움-->
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/textviewMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        >
+
+    </ImageView>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        >
+    <TextView
+        android:layout_width="310dp"
+        android:layout_height="20dp"
+        android:text="Email"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:textSize="13dp"
+        android:textColor="#4B4C4C"
+        android:layout_marginLeft="3dp"
+        >
+
+    </TextView>
+    <EditText
+        android:id="@+id/editTextUserEmail"
+        android:layout_width="310dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:textColorHint="#A5A5A5"
+        android:backgroundTint="#A5A5A5"
+        android:textColor="#6f6f6f"
+        android:hint="email@example.com"
+        android:layout_marginTop="10dp"
+        android:textSize="12dp"
+        android:inputType="textEmailAddress" />
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        >
+    <ImageView
+        android:layout_width="330dp"
+        android:layout_height="110dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+
+        >
+
+    </ImageView>
+    <Button
+        android:id="@+id/buttonFind"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="#00ff0000"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center_horizontal"
+    />
+    </FrameLayout>
+
+</LinearLayout>

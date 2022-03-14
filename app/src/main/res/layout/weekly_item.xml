@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:background="#46604b">
+
+    <TextView
+        android:id="@+id/daytime_weather_weekly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="요일"
+        android:textColor="#dce1dd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/daytime_weather_date"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/daytime_weather_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="날짜"
+        android:textColor="#dce1dd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/daytime_weather_icon"
+        app:layout_constraintStart_toEndOf="@+id/daytime_weather_weekly"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/daytime_weather_icon"
+        android:layout_width="32dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="h,1:1"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/daytime_weather_hightemperature"
+        app:layout_constraintStart_toEndOf="@+id/daytime_weather_date"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/daytime_weather_hightemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="최고"
+        android:textColor="#dce1dd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/daytime_weather_lowtemperature"
+        app:layout_constraintStart_toEndOf="@+id/daytime_weather_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/daytime_weather_lowtemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="최저"
+        android:textColor="#dce1dd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/daytime_weather_hightemperature"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "229771358376",
+    "firebase_url": "https://joggingtracker-6df54-default-rtdb.firebaseio.com",
+    "project_id": "joggingtracker-6df54",
+    "storage_bucket": "joggingtracker-6df54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229771358376:android:2636e223c0c2261923929d",
+        "android_client_info": {
+          "package_name": "com.example.jogging_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229771358376-divv5joj2jao6lup7v8mhelunji88s04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAis6SwkNF6ey0TTeTiidioh1g1s_Z_-fI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229771358376-divv5joj2jao6lup7v8mhelunji88s04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229771358376:android:6a92b5374bcaaf9423929d",
+        "android_client_info": {
+          "package_name": "com.example.weatherm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229771358376-divv5joj2jao6lup7v8mhelunji88s04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAis6SwkNF6ey0TTeTiidioh1g1s_Z_-fI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229771358376-divv5joj2jao6lup7v8mhelunji88s04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
