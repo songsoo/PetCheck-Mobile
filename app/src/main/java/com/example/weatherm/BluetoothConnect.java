@@ -2,18 +2,24 @@ package com.example.weatherm;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,8 +28,13 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.KeyboardShortcutGroup;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,6 +46,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
@@ -65,6 +77,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Set;
 import java.util.UUID;
 
@@ -79,6 +92,16 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
     LineChart bpmChart, RMSSDChart;
     ImageView stressImg;
     Boolean isBluetoothConnected = false;
+    Boolean isGettingDefaultRMSSD = false;
+    Boolean isStartMeasure = false;
+    int numGetDefaultRMSSD;
+    int RMSSDArrNum = 3;
+    double[] rmssdArr = new double[RMSSDArrNum];
+    double[] new_rmssdArr = new double[RMSSDArrNum];
+
+
+    AppCompatDialog progressDialog;
+
 
     int count = 20;
     public static int bpm_i = 0;
@@ -93,6 +116,10 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
     ArrayList<String> deviceAddressArray1, deviceAddressArray2;
     DrawerLayout drawerLayout;
     SwipeRefreshLayout swipeRefreshLayout;
+
+    AnimationDrawable animationDrawable;
+    ImageView mProgressBar;
+
 
     public static ArrayList<Entry> bpm_values = new ArrayList<>();
     public static ArrayList<Entry> RMSSD_values = new ArrayList<>();
@@ -132,7 +159,12 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
         filter.addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED);
         this.registerReceiver(mReceiver, filter);
 
+
     }
+
+
+
+
 
     public void checkPrev() {
         sf = getSharedPreferences("prevData", MODE_PRIVATE);
@@ -144,6 +176,29 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
             String date = sf.getString("date", "");
             changeData(count, res);
         }
+
+        database = FirebaseDatabase.getInstance();
+        rmssd_ref = database.getReference("UserData");
+        rmssd_ref.child("myIDExample").child("defaultRMSSD").addListenerForSingleValueEvent(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.getValue() != null) {
+                    isStartMeasure=true;
+                    String result[] = snapshot.getValue().toString().split("/");
+                    for(int i=0;i<result.length;i++){
+                        rmssdArr[i] = Double.parseDouble(result[i]);
+                    }
+                    }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("movmov", "nein");
+            }
+
+        });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -237,15 +292,18 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
             }
         });
 
+        // 초기 RMSSD 설정
         getDefaultRMSSDBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isBluetoothConnected){
-                    Toast.makeText(getApplicationContext(), "Connected",Toast.LENGTH_SHORT ).show();
+                    startProgress();
+                    //그래프, 서비스 내에서도 모든 정보 제거
                 }else{
-                    Toast.makeText(getApplicationContext(), "Not Connected",Toast.LENGTH_SHORT ).show();
+                    //Alert화면 추가
                 }}
         });
+
 
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -273,6 +331,10 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
             }
         }
 
+
+
+
+
     }
 
     public void setBluetooth() {
@@ -284,8 +346,22 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
         ActivityCompat.requestPermissions(BluetoothConnect.this, permission_list, 1);
 
         // Show paired devices
-        btArrayAdapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        btArrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+        btArrayAdapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1){
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position,convertView,parent);
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+                tv.setTextColor(Color.GRAY);
+                return view;
+            }
+        };
+        btArrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1){
+                public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position,convertView,parent);
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+                tv.setTextColor(Color.GRAY);
+                return view;
+            }
+        };
 
         deviceAddressArray1 = new ArrayList<>();
         deviceAddressArray2 = new ArrayList<>();
@@ -335,6 +411,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
                 deviceAddressArray1.add(deviceHardwareAddress);
             }
         }
+
     }
 
 
@@ -375,7 +452,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
             }
         }
     };
-
+    //
     //The BroadcastReceiver that listens for bluetooth broadcasts
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -385,6 +462,8 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
 
             if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(action)) {
                 isBluetoothConnected = false;
+                stressImg.setImageResource(R.drawable.not_yet);
+                textStatus.setText("Disconnected...");
             }
         }
     };
@@ -438,12 +517,15 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
 
                 // start bluetooth communication
                 if (flag) {
+                    if(!isStartMeasure) {
+                        //측정하세요 알리기
+                    }
                     textStatus.setText("connected to " + name);
                     Intent intent = new Intent(getApplicationContext(), MyService.class);
                     startService(intent);
                     bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-                    drawerLayout.closeDrawer(GravityCompat.START);
                     isBluetoothConnected = true;
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         }
@@ -481,25 +563,48 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
                             break;
                         case "RMSSD":
                             double CurRMSSD = Double.parseDouble(resultArr[1]);
+                            CurRMSSD = Math.round(CurRMSSD);
                             Log.d(TAG, "RMSSD: " + CurRMSSD);
                             RMSSD = CurRMSSD;
                             setData(count, (int) CurRMSSD, 1);
                             RMSSDChart.invalidate();
-                            if (CurRMSSD > 500) {
-                                stressImg.setImageResource(R.drawable.sad);
-                                stressText.setText("HIGH");
-                                RMSSDText.setText(Double.toString(CurRMSSD));
-                                stressStatus = 2;
-                            } else if (CurRMSSD > 200) {
-                                stressImg.setImageResource(R.drawable.normal);
-                                stressText.setText("Normal");
-                                RMSSDText.setText(Double.toString(CurRMSSD));
-                                stressStatus = 1;
-                            } else {
-                                stressImg.setImageResource(R.drawable.happy);
-                                stressText.setText("LOW");
-                                RMSSDText.setText(Double.toString(CurRMSSD));
-                                stressStatus = 0;
+                            if(isStartMeasure) {
+                                if (CurRMSSD > 500) {
+                                    stressImg.setImageResource(R.drawable.sad);
+                                    stressText.setText("HIGH");
+                                    stressStatus = 2;
+                                } else if (CurRMSSD > 200) {
+                                    stressImg.setImageResource(R.drawable.normal);
+                                    stressText.setText("Normal");
+                                    stressStatus = 1;
+                                } else {
+                                    stressImg.setImageResource(R.drawable.happy);
+                                    stressText.setText("LOW");
+                                    stressStatus = 0;
+                                }
+                            }else{
+                                stressText.setText("measure default RMSSD First...");
+                            }
+                            RMSSDText.setText(Double.toString(CurRMSSD));
+
+
+                            if(isGettingDefaultRMSSD && numGetDefaultRMSSD<RMSSDArrNum){
+                                rmssdArr[numGetDefaultRMSSD] = CurRMSSD;
+                                Log.d(TAG,Integer.toString(numGetDefaultRMSSD));
+                                Log.d(TAG,Double.toString(rmssdArr[numGetDefaultRMSSD]));
+                                numGetDefaultRMSSD++;
+                                //10번을 모두 측정하면 데이터베이스에 업데이트하고 측정 종료
+                                if(numGetDefaultRMSSD>=RMSSDArrNum){
+                                    database = FirebaseDatabase.getInstance();
+                                    rmssd_ref = database.getReference("UserData");
+                                    String DefaultRMSSDString = Arrays.toString(rmssdArr);
+                                    DefaultRMSSDString = DefaultRMSSDString.replace("[","");
+                                    DefaultRMSSDString = DefaultRMSSDString.replace("]","");
+                                    DefaultRMSSDString = DefaultRMSSDString.replaceAll(",","/");
+                                    rmssd_ref.child("myIDExample").child("defaultRMSSD").setValue(DefaultRMSSDString);
+                                    isStartMeasure = true;
+                                    progressOFF();
+                                }
                             }
 
                             MyService.RMSSD_count++;
@@ -634,6 +739,8 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
             line_color = ContextCompat.getColor(this, R.color.teal_line);
             graph_color = ContextCompat.getDrawable(this, R.drawable.fade_teal);
             i = RMSSD_i;
+
+
         }
         if (val != -1) {
             values.add(new Entry(i, val, getResources().getDrawable(R.drawable.star)));
@@ -710,6 +817,75 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
             chart.setData(data);
         }
     }
+
+    private void startProgress() {
+
+        progressON();
+        isGettingDefaultRMSSD = true;
+        numGetDefaultRMSSD = 0;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.d(TAG,"Running start Progress");
+            }
+        }, 100);
+
+    }
+
+
+    public void progressON() {
+
+
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressSET();
+        } else {
+
+            progressDialog = new AppCompatDialog(this);
+            progressDialog.setCancelable(false);
+            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            progressDialog.setContentView(R.layout.loading_dialog);
+            progressDialog.setOnKeyListener(new DialogInterface.OnKeyListener(){
+                @Override
+                public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                    if(keyCode== KeyEvent.KEYCODE_BACK){
+                        Log.d(TAG,"back pressed");
+                        progressOFF();
+                    }
+                    return false;
+                }
+            });
+            progressDialog.show();
+        }
+
+        final ImageView img_loading_frame = (ImageView) progressDialog.findViewById(R.id.running_dog_view);
+        final AnimationDrawable frameAnimation = (AnimationDrawable) img_loading_frame.getBackground();
+        img_loading_frame.post(new Runnable() {
+            @Override
+            public void run() {
+                frameAnimation.start();
+            }
+        });
+
+
+    }
+
+    public void progressSET() {
+
+        if (progressDialog == null || !progressDialog.isShowing()) {
+            return;
+        }
+
+    }
+
+    public void progressOFF() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            isGettingDefaultRMSSD = false;
+            numGetDefaultRMSSD = 0;
+            progressDialog.dismiss();
+        }
+    }
+
+
 
 
 }
