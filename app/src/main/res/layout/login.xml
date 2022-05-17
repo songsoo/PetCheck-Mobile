@@ -95,11 +95,12 @@
         <Button
             android:id="@+id/buttonLogin"
             android:layout_width="280dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="230dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="260dp"
             android:layout_gravity="center_horizontal"
             android:background="#00ff0000"
             />
+
         <ImageView
             android:layout_width="300dp"
             android:layout_height="70dp"

@@ -5,6 +5,7 @@
     <color name="colorAccent">#D3830B</color>
     <color name="background">#222121</color>
     <color name="checkBox">#A6A6A6</color>
+    <color name="stateButton">#DDDDDD</color>
     <color name="yellow">#FFD800</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_button">#8B30FC</color>

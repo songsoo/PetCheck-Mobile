@@ -27,22 +27,23 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
             <RelativeLayout
-                 android:layout_height="wrap_content"
-                 android:layout_width="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <Button
                     android:id="@+id/btn_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
                     android:layout_marginVertical="5dp"
-                    android:paddingHorizontal="10dp"
+                    android:layout_marginLeft="30dp"
                     android:background="@color/gray"
-                    android:text="  Select Device"
-                    android:outlineProvider="none"
-                    android:textColor="@color/black"
                     android:drawableLeft="@drawable/device_button"
-                    />
+                    android:outlineProvider="none"
+                    android:paddingHorizontal="10dp"
+                    android:text="  Select Device"
+                    android:textColor="@color/black" />
 
                 <Button
                     android:id="@+id/getDefaultRMSSDBtn"
@@ -104,58 +105,54 @@
                         <TextView
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:backgroundTint="@color/gray"
                             android:text="Stress"
                             android:textColor="@color/black"
                             android:textSize="17sp"
-                            android:layout_weight="1"
-                            android:textStyle="bold"
-                            ></TextView>
+                            android:textStyle="bold"></TextView>
 
                         <TextView
                             android:id="@+id/stressText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="2"
                             android:backgroundTint="@color/gray"
                             android:text="Wait for result..."
                             android:textColor="@color/dark_blue"
                             android:textSize="17sp"
-                            android:layout_weight="2"
-                            android:textStyle="bold"
-                            ></TextView>
+                            android:textStyle="bold"></TextView>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/round_gray"
                         android:gravity="center_vertical"
-                        android:padding="10dp"
-                        android:layout_marginTop="10dp">
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:backgroundTint="@color/gray"
                             android:text="RMSSD"
                             android:textColor="@color/black"
                             android:textSize="17sp"
-                            android:layout_weight="1"
-                            android:textStyle="bold"
-                            ></TextView>
+                            android:textStyle="bold"></TextView>
 
                         <TextView
                             android:id="@+id/RMSSDText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="2"
                             android:backgroundTint="@color/gray"
                             android:text="Wait for result..."
                             android:textColor="@color/dark_blue"
                             android:textSize="17sp"
-                            android:layout_weight="2"
-                            android:textStyle="bold"
-                            ></TextView>
+                            android:textStyle="bold"></TextView>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -223,6 +220,86 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/round_white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:color="@color/black"
+                    android:gravity="center"
+                    android:text="Get state"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    >
+
+                    <TableRow
+                        android:layout_weight="1">
+
+                        <ImageButton
+                            android:id="@+id/btn_state_snack"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/toggle_snack"
+                            android:background="@drawable/state_button"
+                            android:scaleType="fitXY"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:layout_margin="10dp"
+                            ></ImageButton>
+
+                        <ImageButton
+                            android:id="@+id/btn_state_walking"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/toggle_walking"
+                            android:background="@drawable/state_button"
+                            android:scaleType="fitXY"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:layout_margin="10dp"
+                            ></ImageButton>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_weight="1">
+                        <ImageButton
+                            android:id="@+id/btn_state_food"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/toggle_food"
+                            android:background="@drawable/state_button"
+                            android:scaleType="fitXY"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:layout_margin="10dp"
+                            ></ImageButton>
+                        <ImageButton
+                            android:id="@+id/btn_state_angry"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/toggle_angry"
+                            android:background="@drawable/state_button"
+                            android:scaleType="fitXY"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:layout_margin="10dp"
+                            ></ImageButton>
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -243,25 +320,27 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@color/light_gray">
+                android:background="@color/light_gray"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     android:background="@color/gray"
                     android:padding="5dp"
-                    android:text="Bluetooth devices"></TextView>
+                    android:text="Bluetooth devices"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"></TextView>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:background="@color/light_gray"
-                    android:textSize="15sp"
                     android:paddingHorizontal="5dp"
-                    android:text="Paired Devices"></TextView>
+                    android:text="Paired Devices"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"></TextView>
 
                 <ListView
                     android:id="@+id/listview1"
@@ -273,11 +352,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:background="@color/light_gray"
-                    android:textSize="15sp"
                     android:paddingHorizontal="5dp"
-                    android:text="Not Paired Devices (swipe to load)"></TextView>
+                    android:text="Not Paired Devices (swipe to load)"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"></TextView>
 
                 <ListView
                     android:id="@+id/listview2"

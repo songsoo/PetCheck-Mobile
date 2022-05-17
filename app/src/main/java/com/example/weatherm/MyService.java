@@ -1,5 +1,6 @@
 package com.example.weatherm;
 import android.app.Service;
+import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -83,10 +84,11 @@ public class MyService extends Service {
         @RequiresApi(api = Build.VERSION_CODES.O)
         public void onReceive(Context arg0, Intent intent){
             if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
-                changeData(1);
+                updateTotalValues(1);
             }
         }
     }
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -95,7 +97,7 @@ public class MyService extends Service {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void saveData(int prev,int count, double res){
+    public void saveRMSSDData(int prev,int count, double res){
         database = FirebaseDatabase.getInstance();
         rmssd_ref = database.getReference("UserData");
 
@@ -104,7 +106,7 @@ public class MyService extends Service {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void changeData(int prev){
+    public void updateTotalValues(int prev){
         database = FirebaseDatabase.getInstance();
         rmssd_ref = database.getReference("UserData");
 
@@ -120,22 +122,28 @@ public class MyService extends Service {
                     double server_res = server_count*server_rmssd;
                     int totalCount = server_count + RMSSD_count;
                     double totalRes = server_res + res;
-                    saveData(prev,totalCount,totalRes/totalCount);
+                    saveRMSSDData(prev,totalCount,totalRes/totalCount);
                 }else{
                     int totalCount = RMSSD_count;
                     double totalRes = res;
-                    saveData(prev,totalCount,totalRes/totalCount);
+                    saveRMSSDData(prev,totalCount,totalRes/totalCount);
                 }
-                RMSSD_count = 0;
-                res = 0;
-                editor.putInt("count",0);
-                editor.commit();
+                // 업데이트 했으니 초기화
+                resetSF();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.d("movmov","nein");
             }
         });
+    }
+
+    private void resetSF(){
+        Log.d(TAG,"Service reset SF");
+        RMSSD_count = 0;
+        res = 0;
+        editor.putInt("rmssdCount",0);
+        editor.commit();
     }
 
     final Handler handler = new Handler(){
@@ -160,6 +168,7 @@ public class MyService extends Service {
             bundle.putString("test",value);
             Message msg = Message.obtain(null, 0);
             msg.setData(bundle);
+            Log.d(TAG,msg.toString());
             mClient.send(msg);
         } catch (RemoteException e) {
         }
@@ -211,7 +220,6 @@ public class MyService extends Service {
                         bundle.putString("result",result);
                         msg.setData(bundle);
                         handler.sendMessage(msg);
-                        write("1");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
