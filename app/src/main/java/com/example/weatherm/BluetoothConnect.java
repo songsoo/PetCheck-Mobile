@@ -111,7 +111,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
     //int isGettingState=-1;
     int numGetDefaultRMSSD;
     //int numGetStateRMSSD;
-    int RMSSDArrNum = 10;
+    int RMSSDArrNum = 15;
     int totalRMSSDCount = 0;
     int totalBPMCount= 0;
     int BPMCount = 0;
@@ -460,7 +460,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void updateStateRMSSD(int state){
-        if(RMSSD_i>10) {
+        if(RMSSD_i>15) {
             database = FirebaseDatabase.getInstance();
             rmssd_ref = database.getReference("UserData");
             String DefaultRMSSDString = defaultRMSSDDoubleToString(recentRMSSDArr);
@@ -921,11 +921,11 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
                                 setData(count, (int) CurRMSSD, 1);
                                 RMSSDChart.invalidate();
 
-                                if (CurRMSSD > RMSSDAvg*1.3 && (wilcoxonSignedRankTest(defaultRMSSDArr, recentRMSSDArr) && wilcoxonMode)) {
+                                if (CurRMSSD < RMSSDAvg*0.7 && (wilcoxonSignedRankTest(defaultRMSSDArr, recentRMSSDArr) && wilcoxonMode)) {
                                     stressImg.setImageResource(R.drawable.sad);
                                     stressText.setText("HIGH");
                                     stressStatus = 2;
-                                } else if (CurRMSSD > RMSSDAvg*0.7) {
+                                } else if (CurRMSSD < RMSSDAvg*1.2) {
                                     stressImg.setImageResource(R.drawable.normal);
                                     stressText.setText("Normal");
                                     stressStatus = 1;
