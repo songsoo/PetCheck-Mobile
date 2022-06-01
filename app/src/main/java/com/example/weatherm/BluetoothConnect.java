@@ -313,6 +313,8 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
             double res = Double.valueOf(sf.getString("rmssd", ""));
             Log.d(TAG,"Check Prev, Res"+Double.toString(res));
             updateRMSSD(count, res);
+        }else{
+            updateRMSSD(0, 0);
         }
         int BPMCount = sf.getInt("BPMCount", 0);
         if (BPMCount != 0) {
@@ -360,11 +362,14 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
                     double totalRes = server_res + rest*count;
                     double upRMSSDAvg =totalRes / totalRMSSDCount;
                     if(totalRMSSDCount>10000){
+                        Toast.makeText(getApplicationContext(),"Nope", Toast.LENGTH_SHORT).show();
                         RMSSDAvg = upRMSSDAvg;
                         wilcoxonMode = false;
                     }else{
                         RMSSDAvg = getDefaultRMSSDAvg();
                     }
+                    Log.d("test233","AVG:"+Double.toString(RMSSDAvg));
+                    Log.d("test233","count:"+Integer.toString(totalRMSSDCount));
                     uploadRMSSD(totalRMSSDCount, upRMSSDAvg);
 
                     //총 얻은 RMSSD값이 크다면 평균값 활용하기
@@ -921,7 +926,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
                                 setData(count, (int) CurRMSSD, 1);
                                 RMSSDChart.invalidate();
 
-                                if (CurRMSSD < RMSSDAvg*0.7 && (wilcoxonSignedRankTest(defaultRMSSDArr, recentRMSSDArr) && wilcoxonMode)) {
+                                if (CurRMSSD < RMSSDAvg*0.7 && (wilcoxonSignedRankTest(defaultRMSSDArr, recentRMSSDArr) || !wilcoxonMode)) {
                                     stressImg.setImageResource(R.drawable.sad);
                                     stressText.setText("HIGH");
                                     stressStatus = 2;
@@ -956,43 +961,6 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
                                     }
                                     RMSSDAvg = getDefaultRMSSDAvg();
                                 }
-                                /*
-                                if(isGettingState!=-1 && numGetStateRMSSD<RMSSDArrNum){
-                                    rmssdArr[numGetStateRMSSD] = CurRMSSD;
-                                    numGetStateRMSSD++;
-                                    //runningDogText.setText("checking... ( "+numGetStateRMSSD+" / "+RMSSDArrNum+" )...");
-                                    //10번을 모두 측정하면 데이터베이스에 업데이트하고 측정 종료
-                                    if(numGetStateRMSSD>=RMSSDArrNum){
-                                        String DefaultRMSSDString = Arrays.toString(rmssdArr);
-                                        DefaultRMSSDString = DefaultRMSSDString.replace("[","");
-                                        DefaultRMSSDString = DefaultRMSSDString.replace("]","");
-                                        DefaultRMSSDString = DefaultRMSSDString.replaceAll(",","/");
-
-                                        String stateString="";
-                                        switch(isGettingState){
-                                            case 0:
-                                                stateString = "stateSnack";
-                                                break;
-                                            case 1:
-                                                stateString = "stateWalking";
-                                                break;
-                                            case 2:
-                                                stateString = "stateFood";
-                                                break;
-                                            case 3:
-                                                stateString = "stateAngry";
-                                                break;
-                                            default:
-                                                break;
-                                        }
-
-                                        rmssd_ref.child("myIDExample").child(stateString).child(LocalDate.now().toString()+ LocalTime.now().toString()).setValue(DefaultRMSSDString);
-                                        progressOFF();
-                                    }
-
-
-                                }
-                                */
                             }
                             RMSSDText.setText(Double.toString(CurRMSSD));
 
@@ -1372,8 +1340,10 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
         }
 
         if(rankSumMinus<(criticalRegion[RMSSDArrNum]-criticalRegionDiff)){
+            Log.d("test233","true");
             return true;
         }else{
+            Log.d("test233","false");
             return false;
         }
 
