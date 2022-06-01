@@ -118,6 +118,8 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
     int BPMSum = 0;
     int[] BPMArr = new int[RMSSDArrNum];
 
+    String id;
+
     double BPMAvg = 0;
     double[] rmssdArr = new double[RMSSDArrNum];
     double[] defaultRMSSDArr = new double[RMSSDArrNum];
@@ -130,6 +132,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
     int[] criticalRegion = {10,13,17,21,25,30,35,41,47,53,60,67,75,83,91,100,119,130,140,151};
     int criticalRegionDiff = 20;
 
+    userProfile user;
 
 
 
@@ -181,6 +184,8 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
 
         database = FirebaseDatabase.getInstance();
         rmssd_ref = database.getReference("UserData");
+
+
 
         checkPrev();
 
@@ -334,7 +339,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
         database = FirebaseDatabase.getInstance();
         rmssd_ref = database.getReference("UserData");
         Log.d(TAG,Double.toString(res));
-        rmssd_ref.child("myIDExample").child("RMSSD").setValue("/"+Integer.toString(count) + "/" + String.format("%.2f",res)+"/");
+        rmssd_ref.child(id).child("RMSSD").setValue("/"+Integer.toString(count) + "/" + String.format("%.2f",res)+"/");
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -342,14 +347,14 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
         database = FirebaseDatabase.getInstance();
         rmssd_ref = database.getReference("UserData");
         Log.d(TAG,Double.toString(res));
-        rmssd_ref.child("myIDExample").child("BPM").setValue("/"+Integer.toString(count) + "/" + String.format("%.2f",res)+"/");
+        rmssd_ref.child(id).child("BPM").setValue("/"+Integer.toString(count) + "/" + String.format("%.2f",res)+"/");
     }
 
     public void updateRMSSD(int count, double rest) {
 
         database = FirebaseDatabase.getInstance();
         rmssd_ref = database.getReference("UserData");
-        rmssd_ref.child("myIDExample").child("RMSSD").addListenerForSingleValueEvent(new ValueEventListener() {
+        rmssd_ref.child(id).child("RMSSD").addListenerForSingleValueEvent(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -398,7 +403,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
 
         database = FirebaseDatabase.getInstance();
         rmssd_ref = database.getReference("UserData");
-        rmssd_ref.child("myIDExample").child("BPM").addListenerForSingleValueEvent(new ValueEventListener() {
+        rmssd_ref.child(id).child("BPM").addListenerForSingleValueEvent(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -437,7 +442,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
         database = FirebaseDatabase.getInstance();
         rmssd_ref = database.getReference("UserData");
 
-        rmssd_ref.child("myIDExample").child("defaultRMSSD").addListenerForSingleValueEvent(new ValueEventListener() {
+        rmssd_ref.child(id).child("defaultRMSSD").addListenerForSingleValueEvent(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -469,7 +474,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
             database = FirebaseDatabase.getInstance();
             rmssd_ref = database.getReference("UserData");
             String DefaultRMSSDString = defaultRMSSDDoubleToString(recentRMSSDArr);
-            rmssd_ref.child("myIDExample").child("State|"+stateString[state]).child(LocalDate.now().toString()+LocalTime.now().toString().replace('.','|')).setValue(DefaultRMSSDString);
+            rmssd_ref.child(id).child("State|"+stateString[state]).child(LocalDate.now().toString()+LocalTime.now().toString().replace('.','|')).setValue(DefaultRMSSDString);
         }
     }
 
@@ -478,7 +483,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
         database = FirebaseDatabase.getInstance();
         rmssd_ref = database.getReference("UserData");
 
-        rmssd_ref.child("myIDExample").child("BPM").addListenerForSingleValueEvent(new ValueEventListener() {
+        rmssd_ref.child(id).child("BPM").addListenerForSingleValueEvent(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -520,8 +525,8 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
         RMSSDChart = findViewById(R.id.RMSSD_chart);
         drawerLayout = findViewById(R.id.bluetooth_Layout);
 
-
-
+        user = (userProfile) getApplication();
+        id = user.getUserID();
 
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -955,7 +960,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
                                     rmssd_ref = database.getReference("UserData");
                                     if(numGetDefaultRMSSD>=RMSSDArrNum){
                                         String DefaultRMSSDString = defaultRMSSDDoubleToString(rmssdArr);
-                                        rmssd_ref.child("myIDExample").child("defaultRMSSD").setValue(DefaultRMSSDString);
+                                        rmssd_ref.child(id).child("defaultRMSSD").setValue(DefaultRMSSDString);
                                         isStartMeasure = true;
                                         progressOFF();
                                     }

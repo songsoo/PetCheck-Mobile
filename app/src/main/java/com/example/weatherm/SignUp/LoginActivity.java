@@ -1,5 +1,6 @@
 package com.example.weatherm.SignUp;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import com.example.weatherm.MainActivity2;
 import com.example.weatherm.Model.UserInfo;
 import com.example.weatherm.R;
 import com.example.weatherm.home;
+import com.example.weatherm.userProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -30,10 +32,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 /**
  * 앱의 첫 화면이자 로그인 화면<br>
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity{
     private FirebaseAuth fAuth = FirebaseAuth.getInstance();
     private DocumentReference documentReference;
+    EditText id;
 
+    private static String Global_ID;
 
 
     @Override
@@ -46,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         Button button_login = findViewById(R.id.buttonLogin);
         Button forgetPW = findViewById(R.id.btnFindpassword);
         Button toSignup = findViewById(R.id.btnSignin);
-        EditText id = findViewById(R.id.editTextEmail);
+        id = findViewById(R.id.editTextEmail);
         EditText pw = findViewById(R.id.editTextPassword);
         Log.d("hello","2");
 
@@ -140,9 +144,10 @@ public class LoginActivity extends AppCompatActivity {
                         //자동 로그인 여기로 옮겼더니 해결됏습니다
 
                         Toast.makeText(getApplicationContext(), "자동 로그인", Toast.LENGTH_SHORT).show();
+                        userProfile user = (userProfile) getApplication();
+                        user.setUserID(id.getText().toString());
                         startActivity(new Intent(getApplicationContext(), home.class));
 
-                        finish();
                     }
                 }
             }
