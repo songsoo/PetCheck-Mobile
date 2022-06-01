@@ -5,6 +5,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -17,6 +20,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.drawable.AnimationDrawable;
@@ -47,10 +51,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -88,6 +94,7 @@ import java.util.UUID;
 
 public class BluetoothConnect extends AppCompatActivity implements OnChartValueSelectedListener, SwipeRefreshLayout.OnRefreshListener {
 
+    private static final int PERMISSION_ACCESS_FINE_LOCATION = 0;
     String TAG = "movmov";
     UUID BT_MODULE_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifier
 
@@ -123,7 +130,6 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
     int[] criticalRegion = {10,13,17,21,25,30,35,41,47,53,60,67,75,83,91,100,119,130,140,151};
     int criticalRegionDiff = 20;
 
-    NotificationCompat.Builder mBuilder;
 
 
 
@@ -181,11 +187,112 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
         setVariables();
         setBluetooth();
         createChart();
-
         IntentFilter filter = new IntentFilter();
         filter.addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED);
         this.registerReceiver(mReceiver, filter);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (this.checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                builder.setTitle("블루투스에 대한 액세스가 필요합니다");
+                builder.setMessage("어플리케이션이 블루투스를 감지 할 수 있도록 위치 정보 액세스 권한을 부여하십시오.");
+                builder.setPositiveButton(android.R.string.ok, null);
+
+                builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        requestPermissions(new String[]{Manifest.permission.BLUETOOTH_SCAN}, 2 );
+                    }
+                });
+                builder.show();
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (this.checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                builder.setTitle("블루투스에 대한 액세스가 필요합니다");
+                builder.setMessage("어플리케이션이 블루투스를 연결 할 수 있도록 위치 정보 액세스 권한을 부여하십시오.");
+                builder.setPositiveButton(android.R.string.ok, null);
+
+                builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        requestPermissions(new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 3 );
+                    }
+                });
+                builder.show();
+            }
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case PERMISSION_ACCESS_FINE_LOCATION: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d("디버깅", "coarse location permission granted");
+                } else {
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("권한 제한");
+                    builder.setMessage("위치 정보 및 액세스 권한이 허용되지 않았으므로 블루투스를 검색 및 연결할수 없습니다.");
+                    builder.setPositiveButton(android.R.string.ok, null);
+                    builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                        }
+
+                    });
+                    builder.show();
+                }
+                break;
+            }
+            case 2: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d("디버깅", "coarse location permission granted");
+                } else {
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("권한 제한");
+                    builder.setMessage("블루투스 스캔권한이 허용되지 않았습니다.");
+                    builder.setPositiveButton(android.R.string.ok, null);
+                    builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                        }
+
+                    });
+                    builder.show();
+                }
+                break;
+            }
+            case 3: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d("디버깅", "coarse location permission granted");
+                } else {
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("권한 제한");
+                    builder.setMessage("블루투스 연결 권한이 허용되지 않았습니다.");
+                    builder.setPositiveButton(android.R.string.ok, null);
+                    builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                        }
+
+                    });
+                    builder.show();
+                }
+                break;
+            }
+        }
+        return;
     }
 
 
@@ -408,13 +515,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
         RMSSDChart = findViewById(R.id.RMSSD_chart);
         drawerLayout = findViewById(R.id.bluetooth_Layout);
 
-        mBuilder = new NotificationCompat.Builder(BluetoothConnect.this)
-                .setSmallIcon(R.drawable.logo_main_dc)
-                .setContentTitle("블루투스 연결 해제")
-                .setContentText("블루투스를 다시 연결해주세요")
-                .setDefaults(Notification.DEFAULT_VIBRATE)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(false);
+
 
 
         btnMenu.setOnClickListener(new View.OnClickListener() {
@@ -642,6 +743,7 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
     //
     //The BroadcastReceiver that listens for bluetooth broadcasts
     public final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -651,6 +753,22 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
                 isBluetoothConnected = false;
                 stressImg.setImageResource(R.drawable.not_yet);
                 textStatus.setText("Disconnected...");
+
+
+
+                //테스트
+                NotificationManager mNotificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+                mNotificationManager.createNotificationChannel(new NotificationChannel("bluetooth","0",NotificationManager.IMPORTANCE_HIGH));
+
+                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(),"bluetooth")
+                        .setSmallIcon(R.drawable.logo_main_dc)
+                        .setContentTitle("블루투스 연결 해제")
+                        .setContentText("블루투스를 다시 연결해주세요")
+                        .setDefaults(Notification.DEFAULT_VIBRATE)
+                        .setPriority(Notification.PRIORITY_HIGH)
+                        .setSmallIcon(R.drawable.normal);
+
+                mNotificationManager.notify(1,mBuilder.build());
 
 
             }
@@ -708,8 +826,10 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
                 if (flag) {
                     if(!isStartMeasure) {
                         textStatus.setText("Get Default RMSSD First ");
+                        textStatus.setTextSize(10);
                     }else {
                         textStatus.setText("connected to " + name);
+                        textStatus.setTextSize(17);
                     }
                     Intent intent = new Intent(getApplicationContext(), MyService.class);
                     startService(intent);
@@ -1260,8 +1380,8 @@ public class BluetoothConnect extends AppCompatActivity implements OnChartValueS
     }
 
     public void rightShift(double[] array){
-        for(int i=0;i<RMSSDArrNum-1;i++){
-            array[i+1] = array[i];
+        for(int i=RMSSDArrNum-1;i>0;i--){
+            array[i] = array[i-1];
         }
     }
 

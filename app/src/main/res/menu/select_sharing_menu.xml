@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item
+        android:id="@+id/item_sharing_Route"
+        android:enabled="true"
+        android:title="산책 루트 공유"
+        />
+    <item
+        android:id="@+id/item_sharing_daily"
+        android:enabled="true"
+        android:title="일상 공유"/>
+    <item
+        android:id="@+id/item_sharing_tip"
+        android:enabled="true"
+        android:title="나만의 꿀팁 공유"/>
+
+
+</menu>

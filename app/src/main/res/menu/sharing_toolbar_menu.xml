@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <!-- "Mark Favorite", should appear as action button if possible -->
+    <item
+        android:id="@+id/sharing_toolbar_search"
+        android:title="검색"
+        android:icon="@drawable/baseline_search_20"
+        app:showAsAction="ifRoom"/>
+
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/sharing_toolbar_notification"
+        android:title="알림"
+        android:icon="@drawable/baseline_notifications_24"
+        app:showAsAction="ifRoom"/>
+
+
+</menu>

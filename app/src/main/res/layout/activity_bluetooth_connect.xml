@@ -5,7 +5,7 @@
     android:id="@+id/bluetooth_Layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/background_green"
     tools:context=".BluetoothConnect">
 
     <ScrollView
@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
                     android:layout_marginLeft="30dp"
-                    android:background="@color/gray"
+                    android:background="@color/background_green"
                     android:drawableLeft="@drawable/device_button"
                     android:outlineProvider="none"
                     android:paddingHorizontal="10dp"
@@ -52,7 +52,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginVertical="5dp"
                     android:layout_marginRight="30dp"
-                    android:background="@color/gray"
+                    android:background="@color/background_green"
                     android:outlineProvider="none"
                     android:paddingHorizontal="10dp"
                     android:text="Set Default State"
@@ -106,7 +106,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:backgroundTint="@color/gray"
+                            android:background="@color/middle_green"
                             android:text="Stress"
                             android:textColor="@color/black"
                             android:textSize="17sp"
@@ -117,7 +117,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:backgroundTint="@color/gray"
+                            android:backgroundTint="@color/middle_green"
                             android:text="Wait for result..."
                             android:textColor="@color/dark_blue"
                             android:textSize="17sp"
@@ -137,7 +137,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:backgroundTint="@color/gray"
+                            android:backgroundTint="@color/middle_green"
                             android:text="RMSSD"
                             android:textColor="@color/black"
                             android:textSize="17sp"
@@ -148,7 +148,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:backgroundTint="@color/gray"
+                            android:backgroundTint="@color/middle_green"
                             android:text="Wait for result..."
                             android:textColor="@color/dark_blue"
                             android:textSize="17sp"
@@ -320,7 +320,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@color/light_gray"
+                android:background="@color/background_green"
                 android:orientation="vertical">
 
                 <TextView
@@ -336,7 +336,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/light_gray"
+                    android:background="@color/middle_green"
                     android:paddingHorizontal="5dp"
                     android:text="Paired Devices"
                     android:textColor="@color/black"
@@ -352,7 +352,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/light_gray"
+                    android:background="@color/middle_green"
                     android:paddingHorizontal="5dp"
                     android:text="Not Paired Devices (swipe to load)"
                     android:textColor="@color/black"

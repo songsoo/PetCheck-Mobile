@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D3830B</color>
-    <color name="background">#222121</color>
+    <color name="colorPrimary">@color/background_green</color>
+    <color name="colorPrimaryDark">@color/button_green</color>
+    <color name="colorAccent">@color/button_green</color>
+    <color name="background">@color/background_green</color>
     <color name="checkBox">#A6A6A6</color>
     <color name="stateButton">#DDDDDD</color>
+    <color name="background_green">#dce1dd</color>
+    <color name="less_green">#F5F9F6</color>
+    <color name="button_green">#4c6551</color>
+    <color name="middle_green">#78A582</color>
     <color name="yellow">#FFD800</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_button">#8B30FC</color>
@@ -18,7 +22,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="gray">#DEDEDE</color>
+    <color name="background_brown">#6E1B00</color>
     <color name="light_gray">#F6F6F6</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="ivory">#FFF6E9</color>
     <color name="red">#900101</color>
+    <color name="default_orange">#CD853F</color>
+    <color name="whitegray">#2A000000</color>
+    <color name="main_green">#FF65C5B4</color>
+    <color name="main_pink">#EC7BB0</color>
+    <color name="main_purple">#62355C</color>
 </resources>

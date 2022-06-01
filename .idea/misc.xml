@@ -3,35 +3,100 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/all_button_bg_ripple_round_15.xml" value="0.28425925925925927" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/baseline_chat_bubble_outline_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/baseline_chevron_right_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/baseline_clear_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/baseline_east_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/baseline_image_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/baseline_notifications_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/baseline_pause_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/baseline_play_arrow_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/baseline_search_20.xml" value="0.25885416666666666" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/baseline_sentiment_satisfied_alt_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/baseline_stop_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/borderline.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/button_stroke.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/chat.xml" value="0.3333333333333333" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/device_button.xml" value="0.1675925925925926" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/down_arrow_18.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/et_link_back2.xml" value="0.3333333333333333" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/fade_background.xml" value="0.15185185185185185" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/fade_gray.xml" value="0.3472222222222222" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/fade_red.xml" value="0.15185185185185185" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/fade_teal.xml" value="0.2898148148148148" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/friends.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/home.xml" value="0.3333333333333333" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_atmosphere.xml" value="0.2898148148148148" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.3333333333333333" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_clear.xml" value="0.2898148148148148" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_clouds.xml" value="0.1" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_dehaze_black_24dp.xml" value="0.3333333333333333" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_drizzle.xml" value="0.2898148148148148" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2898148148148148" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.3435185185185185" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_rain.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_settings_black_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_smile.xml" value="0.3333333333333333" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_snow.xml" value="0.16944444444444445" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_sun.xml" value="0.16944444444444445" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/ic_thunderstrom.xml" value="0.15185185185185185" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/information_share.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/left_arrow_24.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/menu_selector_color.xml" value="0.1259259259259259" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/profile.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/radius_15.xml" value="0.3333333333333333" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/round_gray.xml" value="0.2898148148148148" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/round_white.xml" value="0.25885416666666666" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/rounded_background.xml" value="0.4685185185185185" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/rounded_background_gray.xml" value="0.4685185185185185" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/state_button.xml" value="0.4027777777777778" />
-        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_bluetooth_connect.xml" value="0.3509259259259259" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/drawable/walking.xml" value="0.3333333333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_bluetooth_connect.xml" value="0.2692533803644915" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_gallery.xml" value="0.3490740740740741" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_information.xml" value="0.33" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_intro.xml" value="0.3814814814814815" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_locationvalidationactivity.xml" value="0.5177083333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_login.xml" value="0.31302083333333336" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_main.xml" value="0.5177083333333333" />
-        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/findpw.xml" value="0.13703703703703704" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_main2.xml" value="0.23854166666666668" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_member_init.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_myrecordwalking.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_picture_expansion.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_profilemodify.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_register.xml" value="0.3125" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_savedroute.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_savedroute2.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/activity_writing_post.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/findpw.xml" value="0.33" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/fragment_daytime.xml" value="0.13703703703703704" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/fragment_home.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/fragment_matching_friends.xml" value="0.31302083333333336" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/fragment_present.xml" value="0.13703703703703704" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/fragment_profile.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/fragment_sharing.xml" value="0.3125" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/fragment_walking.xml" value="0.29080118694362017" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/home.xml" value="0.3" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/item_comment_post.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/item_gallery.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/item_post.xml" value="0.5" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/loading_dialog.xml" value="0.5171875" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/login.xml" value="0.2620545073375262" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/multi_image_item.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/multi_image_item2.xml" value="0.31302083333333336" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/mypage.xml" value="0.13703703703703704" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/profile_item.xml" value="0.31302083333333336" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/signup.xml" value="0.5177083333333333" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/today_item.xml" value="0.5177083333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/view_loader.xml" value="0.31302083333333336" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/weekly_item.xml" value="0.5177083333333333" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/menu/bottom_menu.xml" value="0.3490740740740741" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/menu/information_toolbar_menu.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/menu/profile_toolbar_menu.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/menu/select_sharing_menu.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/menu/sharing_toolbar_menu.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/menu/showsavedroute2_toolbar_menu.xml" value="0.31302083333333336" />
+        <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/menu/writing_post__toolbar_menu.xml" value="0.31302083333333336" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2898148148148148" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2898148148148148" />
       </map>

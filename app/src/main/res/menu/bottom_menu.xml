@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+      android:id="@+id/action_home"
+      android:enabled="true"
+      android:icon="@drawable/home"
+      android:title="홈"/>
+    <item
+        android:id="@+id/action_walking"
+        android:enabled="true"
+        android:icon="@drawable/walking"
+        android:title="산책"/>
+    <item
+        android:id="@+id/action_share"
+        android:enabled="true"
+        android:icon="@drawable/information_share"
+        android:title="공유"/>
+    <item
+        android:id="@+id/action_profile"
+        android:enabled="true"
+        android:icon="@drawable/profile"
+        android:title="내정보"/>
+
+
+</menu>

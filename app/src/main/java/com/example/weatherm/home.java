@@ -3,6 +3,7 @@ package com.example.weatherm;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.VideoView;
@@ -23,7 +24,7 @@ public class home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-
+        Log.d("hello","started");
         //databaseReference.child("index").setValue(0);
 
         // 신체 기록 최초 저장, 처음 실행시만 bodyprofile 설정하도록
@@ -64,6 +65,8 @@ public class home extends AppCompatActivity {
 
                 startActivity(intent);
                 finish();*/
+                Intent intent = new Intent(home.this, MainActivity2.class);
+                startActivity(intent);
             }
         });
         //home에서 part으로 연결
@@ -77,9 +80,7 @@ public class home extends AppCompatActivity {
                 whatbtn = "btn3";
                 bundle2.putString("whatbtn", whatbtn);
                 intent.putExtras(bundle2);
-
                 startActivity(intent);
-                finish();
             }
         });
 
