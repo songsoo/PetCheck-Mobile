@@ -33,6 +33,49 @@
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/layout/weekly_item.xml" value="0.5177083333333333" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2898148148148148" />
         <entry key="..\:/Android Studio Apps/WeatherM/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2898148148148148" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/drawable/all_button_bg_ripple_round_15.xml" value="0.2037037037037037" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/drawable/background_black.xml" value="0.1" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/drawable/background_white.xml" value="0.1" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/drawable/edittext_rectenglebox.xml" value="0.1315" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/drawable/round_gray.xml" value="0.1315" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/drawable/rounded_background.xml" value="0.1" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/drawable/rounded_background_gray.xml" value="0.1" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/drawable/running_dog.xml" value="0.1095" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/activity_friendlist.xml" value="0.1" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/activity_gallery.xml" value="0.1" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/activity_information.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/activity_member_init.xml" value="0.33" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/activity_message.xml" value="0.33" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/activity_pet_init.xml" value="0.33" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/activity_petinfo_init.xml" value="0.12135416666666667" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/activity_writing_post.xml" value="0.33" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/fragment_home.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/fragment_matching_friends.xml" value="0.25" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/fragment_profile.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/fragment_sharing.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/fragment_walking.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/home.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/item_comment_post.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/item_friendlist.xml" value="0.5" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/item_gallery.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/item_messagebox.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/item_post.xml" value="0.33" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/multi_image_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/multi_image_item2.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/signup.xml" value="0.33" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/layout/weekly_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/menu/information_toolbar_menu.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/menu/profile_toolbar_menu.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/menu/select_sharing_menu.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/menu/sharing_toolbar_menu.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/menu/showsavedroute2_toolbar_menu.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/menu/writing_post__toolbar_menu.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/Public/petchecking/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.38229166666666664" />
       </map>
     </option>
   </component>

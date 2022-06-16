@@ -11,9 +11,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.weatherm.api_retrofit.ApiManager;
-import com.example.weatherm.data.ForecastData;
-import com.example.weatherm.data.WeatherData;
+import com.example.weatherm.Weather.api_retrofit.ApiManager;
+import com.example.weatherm.Weather.data.ForecastData;
+import com.example.weatherm.Weather.data.WeatherData;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,8 +40,8 @@ public class WeatherManager {
             // 권한 없으면 메소드 실행 중지
             Toast.makeText(activity, "날씨 권한이 없습니다.", Toast.LENGTH_SHORT).show();
 
-            if (activity instanceof MainActivity) {
-                ((MainActivity) activity).hideProgress();
+            if (activity instanceof MainActivity2) {
+                ((MainActivity2) activity).hideProgress();
             }
             return;
         }
@@ -116,8 +116,8 @@ public class WeatherManager {
                 Log.d("Retrofit", "requestWeather : onFailure");
                 Toast.makeText(activity, "네트워크를 확인해주세요.", Toast.LENGTH_SHORT).show();
 
-                if (activity instanceof MainActivity) {
-                    ((MainActivity) activity).hideProgress();
+                if (activity instanceof MainActivity2) {
+                    ((MainActivity2) activity).hideProgress();
                 }
             }
         });
@@ -143,8 +143,8 @@ public class WeatherManager {
                 Toast.makeText(activity, "네트워크를 확인해주세요.", Toast.LENGTH_SHORT).show();
 
                 //다이얼로그 종료
-                if (activity instanceof MainActivity) {
-                    ((MainActivity) activity).hideProgress();
+                if (activity instanceof MainActivity2) {
+                    ((MainActivity2) activity).hideProgress();
                 }
             }
         });

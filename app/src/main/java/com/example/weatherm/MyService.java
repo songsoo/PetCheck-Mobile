@@ -34,6 +34,7 @@ import java.util.Random;
 
 public class MyService extends Service {
     String TAG = "movmov";
+    static  public  String MESSAGE_KEY="";
     ConnectedThread connectedThread;
     FirebaseDatabase database;
     DatabaseReference rmssd_ref;

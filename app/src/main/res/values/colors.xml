@@ -20,4 +20,10 @@
     <color name="light_gray">#F6F6F6</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#900101</color>
+    //우석
+    <color name="default_orange">#CD853F</color>
+    <color name="whitegray">#2A000000</color>
+    <color name="main_green">#FF65C5B4</color>
+    <color name="main_pink">#EC7BB0</color>
+    <color name="main_purple">#62355C</color>
 </resources>

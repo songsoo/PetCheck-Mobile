@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.weatherm.fragment.daytime.DaytimeFragment;
-import com.example.weatherm.fragment.preset.PresentFragment;
+import com.example.weatherm.Weather.fragment.daytime.DaytimeFragment;
+import com.example.weatherm.Weather.fragment.preset.PresentFragment;
 
 import java.util.ArrayList;
 

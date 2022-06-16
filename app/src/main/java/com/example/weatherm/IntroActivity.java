@@ -42,7 +42,7 @@ public class IntroActivity extends AppCompatActivity {
                 delayHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = MainActivity.createIntent(IntroActivity.this);
+                        Intent intent = MainActivity2.createIntent(IntroActivity.this);
                         startActivity(intent);
                         finish();
                     }
@@ -66,7 +66,7 @@ public class IntroActivity extends AppCompatActivity {
 
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             // ACCESS_FINE_LOCATION 에 대한 권한 획득.
-            Intent intent = MainActivity.createIntent(IntroActivity.this);
+            Intent intent = MainActivity2.createIntent(IntroActivity.this);
             startActivity(intent);
             finish();
 

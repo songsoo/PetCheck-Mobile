@@ -1,6 +1,25 @@
 <resources>
-    <string name="app_name">WeatherM</string>
+
     <string name="firebase_web_client_id">217222564644-q08pe9io2dj9in0bk41lfcputcbi2jr1.apps.googleusercontent.com</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    //우석
+    <string name="app_name">Pet Check</string>
+    <string name="Route_Save">트랙 저장</string>
+    <string name="Route_Stop">트래킹 멈춤</string>
+    <string name="Route_Start">트래킹 시작</string>
+
+    //카테고리 이름 저장
+    <string-array name="CategorySpinner">
+        <item>산책루트</item>
+        <item>일상</item>
+        <item>꿀팁</item>
+    </string-array>
+    <string-array name="tagCategorySpinner">
+        <item>없음</item>
+        <item>다이어트</item>
+        <item>벌크업</item>
+        <item>당충전</item>
+        <item>스트레스,HOT</item>
+    </string-array>
 </resources>

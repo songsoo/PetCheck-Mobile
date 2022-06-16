@@ -6,7 +6,20 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
+    <!--우석-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--인터넷 허용 권한-->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -20,7 +33,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity2">
 
         </activity>
 
@@ -28,12 +41,12 @@
         <activity android:name=".NewId" />
         <activity android:name=".FindPw" />
         <activity android:name=".login">
-            <intent-filter>
+          <!--  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.ALL_APPS" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".home" />
         <activity android:name=".IntroActivity">
@@ -42,6 +55,44 @@
             android:name=".BluetoothConnect"
             android:exported="true" >
         </activity>
+
+        <!--우석-->
+
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".profile.ProfileModifyActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".profile.MyWalkingRecordActivity"/>
+        <activity android:name=".sharing.InformationActivity"/>
+        <activity android:name=".sharing.PictureExpansionActivity"/>
+        <activity android:name=".sharing.WritingPostActivity"/>
+        <activity android:name=".SignUp.LocationValidationActivity"/>
+        <activity android:name=".SignUp.LoginActivity">
+        <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <action android:name="android.intent.action.ALL_APPS" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity android:name=".SignUp.MemberInitActivity"/>
+        <activity android:name=".SignUp.RegisterActivity"/>
+        <activity android:name=".walking.ShowSavedRoute"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".walking.ShowSavedRoute2"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".profile.FriendListActivity"/>
+        <activity android:name=".profile.MessageActivity"/>
+        <activity android:name=".SignUp.PetinitActivity"/>
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value=" AIzaSyD3uGLTid10gpIEatgZUlPTb670a8mg33U" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+        <!---->
 
         <service
             android:name=".MyService"

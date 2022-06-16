@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <EditText
+        android:id="@+id/character_editText"
+        android:layout_width="325dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_rectenglebox"
+        android:gravity="top"
+        android:textSize="15sp"
+        android:paddingLeft="5dp"
+        android:inputType="text|textMultiLine"
+        android:minHeight="48dp"
+        android:singleLine="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/character_TextView" />
+
+    <TextView
+        android:id="@+id/character_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="40dp"
+        android:text="자기소개"
+        android:textColor="#0C0C0C"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Men_button" />
+
+    <Button
+        android:background="@drawable/background_white"
+        android:id="@+id/woman_button"
+        android:layout_width="147dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="44dp"
+        android:text="여성"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Gender_TextView" />
+
+    <TextView
+        android:id="@+id/Gender_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="40dp"
+        android:text="성별"
+        android:textColor="#0C0C0C"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petAgeEditText" />
+
+    <TextView
+
+        android:id="@+id/textView"
+        android:layout_width="411dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="4dp"
+        android:text="   회원정보 입력"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:gravity="fill"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNickname"
+        android:layout_width="329dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:hint=""
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NickName_TextView" />
+
+    <EditText
+        android:id="@+id/petAgeEditText"
+        android:layout_width="329dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="12dp"
+        android:hint="ex) 111111"
+        android:inputType="date"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Birth_TextView" />
+
+    <Button
+        android:id="@+id/checkButton"
+        android:layout_width="335dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/rounded_background"
+        android:backgroundTint="@color/main_pink"
+        android:text="다 음"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/character_editText" />
+
+    <TextView
+        android:id="@+id/NickName_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="30dp"
+        android:text="닉네임"
+        android:textColor="#0C0C0C"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/Birth_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="40dp"
+        android:textColor="#0C0C0C"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:text="생년월일"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNickname" />
+
+    <Button
+        android:id="@+id/Men_button"
+        android:layout_width="147dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="20dp"
+        android:text="남성"
+        android:background="@drawable/background_black"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Gender_TextView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

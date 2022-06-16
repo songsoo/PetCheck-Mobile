@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <TextView
+
+        android:id="@+id/textView"
+        android:layout_width="411dp"
+        android:layout_height="52dp"
+        android:gravity="fill"
+        android:text="   강아지 정보 입력"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/petType_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="30dp"
+                android:text="견종"
+                android:textColor="#0C0C0C"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Men_button" />
+
+            <TextView
+                android:id="@+id/petWeightTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="30dp"
+                android:text="몸무게"
+                android:textColor="#0C0C0C"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/petTypeEditText" />
+
+            <EditText
+                android:id="@+id/petAgeEditText"
+                android:layout_width="329dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:hint="ex) 5세"
+                android:inputType="textPersonName"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Birth_TextView" />
+
+            <EditText
+                android:id="@+id/petTypeEditText"
+                android:layout_width="329dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:inputType="textPersonName"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/petType_TextView" />
+
+            <EditText
+                android:id="@+id/petWeightEditText"
+                android:layout_width="329dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:hint="kg"
+                android:inputType="date"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/petWeightTextView" />
+
+            <EditText
+                android:id="@+id/editTextPetname"
+                android:layout_width="329dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:hint=""
+                android:inputType="textPersonName"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/petName_TextView" />
+
+            <TextView
+                android:id="@+id/Gender_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="30dp"
+                android:text="성별"
+                android:textColor="#0C0C0C"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/petAgeEditText" />
+
+            <Button
+                android:id="@+id/woman_button"
+                android:layout_width="147dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="44dp"
+                android:background="@drawable/background_white"
+                android:text="여아"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Gender_TextView" />
+
+            <Button
+                android:id="@+id/checkButton"
+                android:layout_width="335dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/rounded_background"
+                android:backgroundTint="@color/main_pink"
+                android:text="다 음"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/character_editText" />
+
+            <TextView
+                android:id="@+id/character_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="30dp"
+                android:text="성격 소개"
+                android:textColor="#0C0C0C"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/petWeightEditText" />
+
+            <TextView
+                android:id="@+id/petName_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="30dp"
+                android:text="강아지 이름"
+                android:textColor="#0C0C0C"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/Birth_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="30dp"
+                android:text="나이"
+                android:textColor="#0C0C0C"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPetname" />
+
+            <Button
+                android:id="@+id/Men_button"
+                android:layout_width="147dp"
+                android:layout_height="54dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_black"
+                android:text="남아"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Gender_TextView" />
+
+            <EditText
+                android:id="@+id/character_editText"
+                android:layout_width="325dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_rectenglebox"
+                android:gravity="top"
+                android:inputType="text|textMultiLine"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:singleLine="false"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/character_TextView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

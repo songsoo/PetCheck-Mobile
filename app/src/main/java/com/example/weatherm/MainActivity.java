@@ -1,108 +1,170 @@
 package com.example.weatherm;
-
-import android.app.Activity;
-import android.app.ProgressDialog;
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 
-import com.example.weatherm.data.ForecastData;
-import com.example.weatherm.data.WeatherData;
-import com.example.weatherm.fragment.MyPagerAdapter;
-import com.example.weatherm.fragment.preset.PresentFragment;
-import com.google.android.material.tabs.TabLayout;
+import com.example.weatherm.homeFolder.HomeFragment;
+import com.example.weatherm.matching_friends.Matching_friednsFragment;
+import com.example.weatherm.profile.ProfileFragment;
+import com.example.weatherm.sharing.SharingFragment;
+import com.example.weatherm.walking.WalkingFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Intent createIntent(Activity activity) {
-        return new Intent(activity, MainActivity.class);
-    }
-
-    // 사용자의 입력을 제한
-    // api 요청시에 사용
-    private ProgressDialog pd;
-
-    private ViewPager viewPager;
-
-    private WeatherManager weatherManager;
-    private WeatherData weatherData;
-    private ForecastData forecastData;
-
-    public WeatherData getWeatherData() {
-        return weatherData;
-    }
-
-    public void setWeatherData(WeatherData weatherData) {
-        this.weatherData = weatherData;
-    }
-
-    public ForecastData getForecastData() {
-        return forecastData;
-    }
-
-    public void setForecastData(ForecastData forecastData) {
-        this.forecastData = forecastData;
-    }
+    private BottomNavigationView bottomNavigationView;
+    public FragmentManager fm;
+    public FragmentTransaction ft;
+    private WalkingFragment walkingFragment;
+    private HomeFragment homeFragment;
+    private Matching_friednsFragment matching_friednsFragment;
+    private ProfileFragment profileFragment;
+    private SharingFragment sharingFragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        viewPager = findViewById(R.id.pager);
+    protected void onCreate(Bundle savedInstanceState){
+        onCheckPermision();
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
 
-        showProgress("날씨 요청 중입니다.");
+       bottomNavigationView=findViewById(R.id.bottomNavi);
+       bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+           @Override
+           public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+               int id=item.getItemId();
+               switch (id){
+                   case R.id.action_home:
+                       setFrag(0);
+                       break;
+                   case R.id.action_walking:
+                       setFrag(1);
+                       break;
+                   case R.id.action_friend:
+                       setFrag(2);
+                       break;
+                   case R.id.action_share:
+                       setFrag(3);
+                       break;
+                   case R.id.action_profile:
+                       setFrag(4);
+                       break;
 
-        weatherManager = new WeatherManager(this, new WeatherManager.OnChangeWeather() {
-            @Override
-            public void change(WeatherData weatherData, ForecastData forecastData) {
-                // api 응답 완료시 실행
-                hideProgress();
+               }
+               return true;
+           }
+       });
+       walkingFragment=new WalkingFragment();
+       homeFragment=new HomeFragment();
+       matching_friednsFragment=new Matching_friednsFragment();
+       profileFragment=new ProfileFragment();
+       sharingFragment=new SharingFragment();
+       Intent intent=getIntent();
 
-                setWeatherData(weatherData);
-                setForecastData(forecastData);
+int flag=intent.getIntExtra("flag",0);
+if(flag==1)
+    setFrag(1);
+else
+    setFrag(0);
+           String documentId = intent.getStringExtra("documentId");
+           if(documentId!=null) {
+               Bundle bundle = new Bundle();
+               bundle.putString("documentId", documentId); //fragment1로 번들 전달 fragment1.setArguments(bundle);
+               walkingFragment.setArguments(bundle);
+               setFrag(1);
 
-                init();
-            }
-        });
+           }
 
-//        MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager());
-//        viewPager.setAdapter(adapter);
-//
-//        TabLayout tabLayout = findViewById(R.id.tab);
-//        tabLayout.setupWithViewPager(viewPager);
-    }
+   }
 
-    private void init(){
-        MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
+   public void setFrag(int n){
+        fm=getSupportFragmentManager();
+        ft=fm.beginTransaction();
+        switch(n){
+            case 0:
+                ft.replace(R.id.main_frame,homeFragment);
+                ft.commit();
+                break;
+            case 1:
+                ft.replace(R.id.main_frame,walkingFragment);
+                ft.commit();
+                break;
+            case 2:
+                ft.replace(R.id.main_frame,matching_friednsFragment);
+                ft.commit();
+                break;
+            case 3:
+                ft.replace(R.id.main_frame,sharingFragment);
+                ft.commit();
+                break;
+            case 4:
+                ft.replace(R.id.main_frame,profileFragment);
+                ft.commit();
+                break;
 
-        TabLayout tabLayout = findViewById(R.id.tab);
-        tabLayout.setupWithViewPager(viewPager);
-    }
+        }
+   }
 
-    //ProgressDialog 출력 메소드
-    public void showProgress(String message) {
-        if (pd != null) {
-            pd.dismiss();
-            pd = null;
+   //위치 권환 요청
+    ActivityResultLauncher<String[]> locationPermissionRequest =
+            registerForActivityResult(new ActivityResultContracts
+                            .RequestMultiplePermissions(), result -> {
+                        Boolean fineLocationGranted = null;
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                            fineLocationGranted = result.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false);
+                        }
+                        Boolean coarseLocationGranted = null;
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                            coarseLocationGranted = result.getOrDefault(
+                                    Manifest.permission.ACCESS_COARSE_LOCATION,false);
+                        }
+                        if (fineLocationGranted != null && fineLocationGranted) {
+
+                            // Precise location access granted.
+                        } else if (coarseLocationGranted != null && coarseLocationGranted) {
+
+                            // Only approximate location access granted.
+                        } else {
+                            // No location access granted.
+                        }
+                    }
+            );
+
+    public void onCheckPermision(){
+        if (ContextCompat.checkSelfPermission(
+                getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
+            // You can use the API that requires the permission.
+        } else {
+            // You can directly ask for the permission.
+            locationPermissionRequest.launch(new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+            });
+
+
         }
 
-        pd = new ProgressDialog(this);
-        pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        pd.setMessage(message);
-        pd.setCancelable(false);
-        pd.setCanceledOnTouchOutside(false);
-        pd.show();
     }
+   public void replaceFragment(Fragment fragment){
+       fm=getSupportFragmentManager();
+       ft=fm.beginTransaction();
+       ft.replace(R.id.main_frame,fragment);
+       ft.commit();
+   }
 
-    //다이얼로그 종료 메소드
-    public void hideProgress() {
-        if (pd != null) {
-            pd.dismiss();
-            pd = null;
-        }
-    }
 }
+
